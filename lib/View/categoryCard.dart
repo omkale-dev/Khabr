@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
   final String imageAssetUrl, category;
+  final getCategoryNews;
   CategoryCard({
     @required this.imageAssetUrl,
     @required this.category,
+    @required this.getCategoryNews,
   });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: getCategoryNews,
       child: Container(
         margin: EdgeInsets.all(6),
         height: 70,

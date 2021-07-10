@@ -1,6 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:khabr/Controller/passwordController.dart';
+import 'package:khabr/View/loginScreen.dart';
 
 import 'View/homeScreen.dart';
 
@@ -35,10 +36,25 @@ class LogoPage extends StatefulWidget {
 class _LogoPageState extends State<LogoPage> {
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (c) => HomeScreen())));
+    checkIfLogin();
+  }
+
+  Future<void> checkIfLogin() async {
+    bool isSignin = await PasswordController.isSignin();
+    bool isLoggedOut = await PasswordController.checkLoggedOut();
+    print("isLoggedOut $isLoggedOut");
+    print("isSignin $isSignin");
+    if (isSignin && isLoggedOut) {
+      Timer(
+          Duration(seconds: 3),
+          () => Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (c) => HomeScreen())));
+    } else {
+      Timer(
+          Duration(seconds: 3),
+          () => Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (c) => LoginScreen())));
+    }
   }
 
   @override

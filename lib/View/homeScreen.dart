@@ -18,7 +18,15 @@ class _HomeScreenState extends State<HomeScreen> {
   bool loading = true;
   getNews({String searchNews}) async {
     if (searchNews != null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+          "Fetching News on $searchNews",
+          textAlign: TextAlign.center,
+        ),
+        behavior: SnackBarBehavior.floating,
+      ));
       news = await fetchNews(search: searchNews);
+
       loading = false;
     } else {
       news = await fetchNews();
@@ -43,6 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Icon(Icons.refresh),
           onPressed: () {
             getNews();
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "Refreshed",
+                  textAlign: TextAlign.center,
+                ),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
           },
         ),
         drawer: Drawer(
@@ -80,6 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   return CategoryCard(
                     imageAssetUrl: categoryList[i].imageUrl,
                     category: categoryList[i].category,
+                    getCategoryNews: () =>
+                        getNews(searchNews: categoryList[i].category),
                   );
                 },
                 itemCount: categoryList.length,

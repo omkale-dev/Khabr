@@ -5,6 +5,16 @@ class NewsListCard extends StatelessWidget {
   final String imageUrl, title, description, articleUrl;
   NewsListCard(
       {@required this.imageUrl, this.title, this.description, this.articleUrl});
+
+  ImageProvider getImage() {
+    try {
+      return NetworkImage(imageUrl);
+    } catch (e) {
+      print("Error in loading image");
+      return AssetImage('assets/images/khaBr.png');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,11 +31,15 @@ class NewsListCard extends StatelessWidget {
           children: [
             Container(
               height: 200,
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.green,
                 borderRadius: BorderRadius.circular(5),
                 image: DecorationImage(
-                    image: NetworkImage(imageUrl), fit: BoxFit.cover),
+                  // image: NetworkImage(imageUrl),
+                  image: getImage(),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SizedBox(

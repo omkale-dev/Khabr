@@ -17,7 +17,8 @@
 	2. News for specific categories like `Business`,`Science` etc can be seen.
 	3. One can also search for specific news
 	4. News can be shared with others.
-- This was made with the intension to learn to make http requests to the `api's` and display data accordingly . 
+  5. Users can signup and login
+- This was made with the intension to learn to make http requests to the `api's` and display data accordingly, manage sign in and login features, and more. 
 - I made use of `newsapi.org` to fetch the news data.
 - The json looks something like this.
 ```dart
@@ -31,7 +32,7 @@ Article article = Article(
             articleUrl: element["url"],
           );
 ```
-- Made use of `Listviews`,`Gesture Detector`,`Web View`,and `Custom widgets`.
+- Made use of `Listviews`,`Shared Preferences`,`Gesture Detector`,`Web View`,and `Custom widgets`.
 - App follows `Material Design` throught.
 - Made use of `MVC` pattern.
 
@@ -43,6 +44,7 @@ Article article = Article(
 `http: ^0.13.1`
 `webview_flutter: ^2.0.2 `
 `share: ^2.0.1`
+`shared_preferences: ^2.0.6`
 ###### For more info on packages visit [here](http://pub.dev "here")
 ------------
 

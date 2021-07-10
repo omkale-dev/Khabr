@@ -1,2 +1,1 @@
-// TODO:Add your api key from newsapi.org
-const String apiKey = 'add_your_api_key';
+const String apiKey = '2db5e74e97674ae898939f53197d2031';
