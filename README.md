@@ -1,3 +1,4 @@
+> App that I made during college, I dont do app developement anymore. These are just memories😇.
 # Khabar🗞
 ###### Mobile app for all your news needs.
 
